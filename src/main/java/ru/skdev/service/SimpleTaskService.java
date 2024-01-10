@@ -6,6 +6,7 @@ import ru.skdev.model.Task;
 import ru.skdev.store.TaskStore;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,5 +27,10 @@ public class SimpleTaskService implements TaskService {
     @Override
     public List<Task> findDoneTasks() {
         return store.findDoneTasks();
+    }
+
+    @Override
+    public Optional<Task> save(Task task) {
+        return store.create(task);
     }
 }
