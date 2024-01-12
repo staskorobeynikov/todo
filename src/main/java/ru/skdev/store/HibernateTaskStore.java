@@ -195,4 +195,29 @@ public class HibernateTaskStore implements TaskStore {
         }
         return false;
     }
+
+    @Override
+    public Optional<Task> findById(Integer id) {
+        Session session = factory.openSession();
+        Transaction transaction = null;
+        Optional<Task> result = Optional.empty();
+        try {
+            transaction = session.beginTransaction();
+            result = session.createQuery("""
+                                    FROM Task t
+                                    WHERE t.id = :id
+                                    """,
+                            Task.class
+                    ).setParameter("id", id)
+                    .uniqueResultOptional();
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return result;
+    }
 }

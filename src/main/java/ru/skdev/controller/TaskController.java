@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.skdev.model.Task;
@@ -45,5 +46,17 @@ public class TaskController {
     public String saveNewTask(@ModelAttribute Task task) {
         service.save(task);
         return "redirect:/tasks";
+    }
+
+    @GetMapping("/{id}")
+    public String getOneTaskPage(Model model, @PathVariable Integer id) {
+        Optional<Task> task = service.findById(id);
+        if (task.isEmpty()) {
+            String message = String.format("Task with id: %s not found", id);
+            model.addAttribute("message", message);
+            return "errors/404";
+        }
+        model.addAttribute("task", task.get());
+        return "tasks/one";
     }
 }

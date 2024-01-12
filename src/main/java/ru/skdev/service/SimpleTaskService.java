@@ -33,4 +33,9 @@ public class SimpleTaskService implements TaskService {
     public Optional<Task> save(Task task) {
         return store.create(task);
     }
+
+    @Override
+    public Optional<Task> findById(Integer id) {
+        return store.findById(id);
+    }
 }

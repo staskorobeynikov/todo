@@ -13,4 +13,6 @@ public interface TaskService {
     List<Task> findDoneTasks();
 
     Optional<Task> save(Task task);
+
+    Optional<Task> findById(Integer id);
 }
