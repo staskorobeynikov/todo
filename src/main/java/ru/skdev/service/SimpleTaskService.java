@@ -38,4 +38,14 @@ public class SimpleTaskService implements TaskService {
     public Optional<Task> findById(Integer id) {
         return store.findById(id);
     }
+
+    @Override
+    public boolean delete(Integer id) {
+        return store.delete(id);
+    }
+
+    @Override
+    public boolean updateDone(Integer id) {
+        return store.updateDone(id);
+    }
 }

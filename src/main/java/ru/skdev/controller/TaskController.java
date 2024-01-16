@@ -59,4 +59,26 @@ public class TaskController {
         model.addAttribute("task", task.get());
         return "tasks/one";
     }
+
+    @PostMapping("/done/{id}")
+    public String markTaskDone(Model model, @PathVariable Integer id) {
+        boolean result = service.updateDone(id);
+        if (!result) {
+            String message = String.format("Task with id: %s not mark done", id);
+            model.addAttribute("message", message);
+            return "errors/404";
+        }
+        return "redirect:/tasks";
+    }
+
+    @PostMapping("/delete/{id}")
+    public String deleteTask(Model model, @PathVariable Integer id) {
+        boolean result = service.delete(id);
+        if (!result) {
+            String message = String.format("Task with id: %s not delete", id);
+            model.addAttribute("message", message);
+            return "errors/404";
+        }
+        return "redirect:/tasks";
+    }
 }

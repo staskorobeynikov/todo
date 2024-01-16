@@ -31,6 +31,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }
@@ -56,6 +57,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }
@@ -82,6 +84,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }
@@ -107,6 +110,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }
@@ -137,6 +141,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }
@@ -153,8 +158,7 @@ public class HibernateTaskStore implements TaskStore {
                             """
                                     DELETE FROM Task t
                                     WHERE t.id = :id
-                                    """,
-                            Task.class
+                                    """
                     ).setParameter("id", id)
                     .executeUpdate();
             transaction.commit();
@@ -163,6 +167,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }
@@ -180,8 +185,7 @@ public class HibernateTaskStore implements TaskStore {
                                     UPDATE Task t
                                     SET t.done = true
                                     WHERE t.id = :id
-                                    """,
-                            Task.class
+                                    """
                     ).setParameter("id", id)
                     .executeUpdate();
             transaction.commit();
@@ -190,6 +194,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }
@@ -215,6 +220,7 @@ public class HibernateTaskStore implements TaskStore {
             if (transaction != null) {
                 transaction.rollback();
             }
+            log.error(e.getMessage(), e);
         } finally {
             session.close();
         }

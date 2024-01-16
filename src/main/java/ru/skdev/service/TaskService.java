@@ -15,4 +15,8 @@ public interface TaskService {
     Optional<Task> save(Task task);
 
     Optional<Task> findById(Integer id);
+
+    boolean delete(Integer id);
+
+    boolean updateDone(Integer id);
 }
