@@ -8,23 +8,23 @@
     <script th:src="@{/js/code.jquery.com_jquery-3.7.0.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
 
-    <title>Список всех заданий</title>
+    <title>List all tasks</title>
 </head>
 <body>
 <div class="container-fluid p-0">
     <header th:insert="blocks/header::header"></header>
     <div class="container">
         <nav class="nav nav-pills nav-justified">
-            <a class="nav-link" th:href="@{/tasks}">Все задания</a>
-            <a class="nav-link" th:href="@{/tasks/done}">Выполненные задания</a>
-            <a class="nav-link" th:href="@{/tasks/undone}">Новые задания</a>
+            <a class="nav-link" th:href="@{/tasks}">All tasks</a>
+            <a class="nav-link" th:href="@{/tasks/done}">Done tasks</a>
+            <a class="nav-link" th:href="@{/tasks/undone}">New tasks</a>
         </nav>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">Статус</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Дата создания</th>
+                <th scope="col">Status</th>
+                <th scope="col">Name</th>
+                <th scope="col">Created date</th>
             </tr>
             </thead>
             <tbody>
@@ -48,8 +48,8 @@
             <div class="col-6"></div>
             <div class="col-6">
                 <div class="row">
-                    <div class="col-4"><a class="btn btn-secondary w-100" th:href="@{/tasks/create}">Добавить
-                        задание</a></div>
+                    <div class="col-4"><a class="btn btn-secondary w-100" th:href="@{/tasks/create}">Add
+                        new task</a></div>
                 </div>
             </div>
         </div>

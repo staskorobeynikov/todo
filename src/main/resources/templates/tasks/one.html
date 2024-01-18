@@ -8,7 +8,7 @@
     <script th:src="@{/js/code.jquery.com_jquery-3.7.0.min.js}"></script>
     <script th:src="@{/js/bootstrap.min.js}"></script>
 
-    <title>Подробное описание задания</title>
+    <title>Description Task</title>
 </head>
 <body>
 <div class="container-fluid p-0">
@@ -42,7 +42,7 @@
                     </div>
                     <div class="col-4">
                         <a class="btn btn-outline-info w-100"
-                           th:href="@{/tasks/duplicate/{id}(id=${task.id})}">Редактировать</a></div>
+                           th:href="@{/tasks/update/{id}(id=${task.id})}">Edit</a></div>
                     <div class="col-4">
                         <form th:action="@{/tasks/delete/{id}(id=${task.id})}" method="post">
                             <button type="submit" class="btn btn-outline-danger w-100">

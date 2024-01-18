@@ -48,4 +48,9 @@ public class SimpleTaskService implements TaskService {
     public boolean updateDone(Integer id) {
         return store.updateDone(id);
     }
+
+    @Override
+    public boolean update(Integer id, Task task) {
+        return store.update(id, task);
+    }
 }

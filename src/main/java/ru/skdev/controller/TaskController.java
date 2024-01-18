@@ -81,4 +81,27 @@ public class TaskController {
         }
         return "redirect:/tasks";
     }
+
+    @GetMapping("/update/{id}")
+    public String getUpdateTaskPage(Model model, @PathVariable Integer id) {
+        Optional<Task> task = service.findById(id);
+        if (task.isEmpty()) {
+            String message = String.format("Task with id: %s not found", id);
+            model.addAttribute("message", message);
+            return "errors/404";
+        }
+        model.addAttribute("task", task.get());
+        return "tasks/update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String getUpdateTaskPage(Model model, @ModelAttribute Task task, @PathVariable Integer id) {
+        boolean result = service.update(id, task);
+        if (!result) {
+            String message = String.format("Task with id: %s not edit", id);
+            model.addAttribute("message", message);
+            return "errors/404";
+        }
+        return String.format("redirect:/tasks/%s", id);
+    }
 }

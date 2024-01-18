@@ -19,4 +19,6 @@ public interface TaskService {
     boolean delete(Integer id);
 
     boolean updateDone(Integer id);
+
+    boolean update(Integer id, Task task);
 }
