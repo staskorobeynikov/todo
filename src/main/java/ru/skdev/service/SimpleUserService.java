@@ -16,4 +16,9 @@ public class SimpleUserService implements UserService {
     public Optional<User> save(User user) {
         return userStore.save(user);
     }
+
+    @Override
+    public Optional<User> findByLoginAndPassword(User user) {
+        return userStore.findByLoginAndPassword(user.getLogin(), user.getPassword());
+    }
 }

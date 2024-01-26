@@ -8,4 +8,5 @@ public interface UserService {
 
     Optional<User> save(User user);
 
+    Optional<User> findByLoginAndPassword(User user);
 }

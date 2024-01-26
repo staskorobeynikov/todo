@@ -33,4 +33,20 @@ public class UserController {
         }
         return "users/register";
     }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "users/login";
+    }
+
+    @PostMapping("/login")
+    public String loginUser(Model model, @ModelAttribute User user) {
+        Optional<User> result = service.findByLoginAndPassword(user);
+        if (result.isEmpty()) {
+            String message = "You entered incorrect email or password";
+            model.addAttribute("error", message);
+            return "users/login";
+        }
+        return "redirect:/tasks";
+    }
 }
