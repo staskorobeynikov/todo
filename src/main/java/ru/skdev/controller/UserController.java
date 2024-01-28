@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.skdev.model.User;
 import ru.skdev.service.SimpleUserService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Controller
@@ -40,13 +42,20 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginUser(Model model, @ModelAttribute User user) {
+    public String loginUser(Model model, @ModelAttribute User user, HttpServletRequest request) {
         Optional<User> result = service.findByLoginAndPassword(user);
         if (result.isEmpty()) {
             String message = "You entered incorrect email or password";
             model.addAttribute("error", message);
             return "users/login";
         }
+        request.getSession().setAttribute("user", result.get());
         return "redirect:/tasks";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/users/login";
     }
 }
