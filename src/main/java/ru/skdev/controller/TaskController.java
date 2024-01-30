@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import ru.skdev.model.Task;
+import ru.skdev.model.User;
 import ru.skdev.service.TaskService;
 
 import java.util.Optional;
@@ -43,7 +45,8 @@ public class TaskController {
     }
 
     @PostMapping("/create")
-    public String saveNewTask(@ModelAttribute Task task) {
+    public String saveNewTask(@ModelAttribute Task task, @SessionAttribute("user") User user) {
+        task.setUser(user);
         service.save(task);
         return "redirect:/tasks";
     }
@@ -95,7 +98,9 @@ public class TaskController {
     }
 
     @PostMapping("/update/{id}")
-    public String getUpdateTaskPage(Model model, @ModelAttribute Task task, @PathVariable Integer id) {
+    public String getUpdateTaskPage(Model model, @ModelAttribute Task task,
+                                    @PathVariable Integer id, @SessionAttribute("user") User user) {
+        task.setUser(user);
         boolean result = service.update(id, task);
         if (!result) {
             String message = String.format("Task with id: %s not edit", id);

@@ -33,7 +33,7 @@ public class UserController {
             model.addAttribute("error", message);
             return "users/register";
         }
-        return "users/register";
+        return "users/login";
     }
 
     @GetMapping("/login")
