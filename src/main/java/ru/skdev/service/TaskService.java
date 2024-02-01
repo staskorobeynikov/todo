@@ -1,16 +1,17 @@
 package ru.skdev.service;
 
 import ru.skdev.model.Task;
+import ru.skdev.model.User;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface TaskService {
-    List<Task> findAll();
+    List<Task> findAll(User user);
 
-    List<Task> findUndoneTasks();
+    List<Task> findUndoneTasks(User user);
 
-    List<Task> findDoneTasks();
+    List<Task> findDoneTasks(User user);
 
     Optional<Task> save(Task task);
 

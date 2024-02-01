@@ -1,6 +1,7 @@
 package ru.skdev.store;
 
 import ru.skdev.model.Task;
+import ru.skdev.model.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,11 +9,11 @@ import java.util.Optional;
 public interface TaskStore {
     Optional<Task> create(Task task);
 
-    List<Task> findAll();
+    List<Task> findAll(User user);
 
-    List<Task> findUndoneTasks();
+    List<Task> findUndoneTasks(User user);
 
-    List<Task> findDoneTasks();
+    List<Task> findDoneTasks(User user);
 
     boolean update(int id, Task task);
 

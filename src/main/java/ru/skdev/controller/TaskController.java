@@ -22,20 +22,20 @@ public class TaskController {
     private final TaskService service;
 
     @GetMapping
-    public String getAllTasks(Model model) {
-        model.addAttribute("tasks", service.findAll());
+    public String getAllTasks(Model model, @SessionAttribute("user") User user) {
+        model.addAttribute("tasks", service.findAll(user));
         return "tasks/list";
     }
 
     @GetMapping("/done")
-    public String getDoneTasks(Model model) {
-        model.addAttribute("tasks", service.findDoneTasks());
+    public String getDoneTasks(Model model, @SessionAttribute("user") User user) {
+        model.addAttribute("tasks", service.findDoneTasks(user));
         return "tasks/list";
     }
 
     @GetMapping("/undone")
-    public String getUndoneTasks(Model model) {
-        model.addAttribute("tasks", service.findUndoneTasks());
+    public String getUndoneTasks(Model model, @SessionAttribute("user") User user) {
+        model.addAttribute("tasks", service.findUndoneTasks(user));
         return "tasks/list";
     }
 

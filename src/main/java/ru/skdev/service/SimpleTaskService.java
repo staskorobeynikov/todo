@@ -3,6 +3,7 @@ package ru.skdev.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.skdev.model.Task;
+import ru.skdev.model.User;
 import ru.skdev.store.TaskStore;
 
 import java.util.List;
@@ -15,18 +16,18 @@ public class SimpleTaskService implements TaskService {
     private final TaskStore store;
 
     @Override
-    public List<Task> findAll() {
-        return store.findAll();
+    public List<Task> findAll(User user) {
+        return store.findAll(user);
     }
 
     @Override
-    public List<Task> findUndoneTasks() {
-        return store.findUndoneTasks();
+    public List<Task> findUndoneTasks(User user) {
+        return store.findUndoneTasks(user);
     }
 
     @Override
-    public List<Task> findDoneTasks() {
-        return store.findDoneTasks();
+    public List<Task> findDoneTasks(User user) {
+        return store.findDoneTasks(user);
     }
 
     @Override

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import ru.skdev.model.Task;
+import ru.skdev.model.User;
 
 import java.util.List;
 import java.util.Map;
@@ -28,32 +29,42 @@ public class HibernateTaskStore implements TaskStore {
     }
 
     @Override
-    public List<Task> findAll() {
+    public List<Task> findAll(User user) {
         String query = """
                 FROM Task t
+                WHERE t.user.id = :id
                 ORDER BY t.id
                 """;
-        return repository.query(query, Task.class);
+        Map<String, Object> arguments = Map.of(
+                "id", user.getId()
+        );
+        return repository.query(query, Task.class, arguments);
     }
 
     @Override
-    public List<Task> findUndoneTasks() {
+    public List<Task> findUndoneTasks(User user) {
         String query = """
                 FROM Task t
-                WHERE t.done = false
+                WHERE t.done = false AND t.user.id = :id
                 ORDER BY t.id
                 """;
-        return repository.query(query, Task.class);
+        Map<String, Object> arguments = Map.of(
+                "id", user.getId()
+        );
+        return repository.query(query, Task.class, arguments);
     }
 
     @Override
-    public List<Task> findDoneTasks() {
+    public List<Task> findDoneTasks(User user) {
         String query = """
                 FROM Task t
-                WHERE t.done = true
+                WHERE t.done = true AND t.user.id = :id
                 ORDER BY t.id
                 """;
-        return repository.query(query, Task.class);
+        Map<String, Object> arguments = Map.of(
+                "id", user.getId()
+        );
+        return repository.query(query, Task.class, arguments);
     }
 
     @Override
