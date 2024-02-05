@@ -32,6 +32,7 @@ public class HibernateTaskStore implements TaskStore {
     public List<Task> findAll(User user) {
         String query = """
                 FROM Task t
+                JOIN FETCH t.priority
                 WHERE t.user.id = :id
                 ORDER BY t.id
                 """;
@@ -45,6 +46,7 @@ public class HibernateTaskStore implements TaskStore {
     public List<Task> findUndoneTasks(User user) {
         String query = """
                 FROM Task t
+                JOIN FETCH t.priority
                 WHERE t.done = false AND t.user.id = :id
                 ORDER BY t.id
                 """;
@@ -58,6 +60,7 @@ public class HibernateTaskStore implements TaskStore {
     public List<Task> findDoneTasks(User user) {
         String query = """
                 FROM Task t
+                JOIN FETCH t.priority
                 WHERE t.done = true AND t.user.id = :id
                 ORDER BY t.id
                 """;
