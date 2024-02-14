@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import ru.skdev.model.Task;
 import ru.skdev.model.User;
+import ru.skdev.service.PriorityService;
 import ru.skdev.service.TaskService;
 
 import java.util.Optional;
@@ -20,6 +21,7 @@ import java.util.Optional;
 @RequestMapping("/tasks")
 public class TaskController {
     private final TaskService service;
+    private final PriorityService priorityService;
 
     @GetMapping
     public String getAllTasks(Model model, @SessionAttribute("user") User user) {
@@ -40,7 +42,8 @@ public class TaskController {
     }
 
     @GetMapping("/create")
-    public String getCreatePage() {
+    public String getCreatePage(Model model) {
+        model.addAttribute("priorities", priorityService.findAll());
         return "tasks/create";
     }
 
