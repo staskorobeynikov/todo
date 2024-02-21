@@ -1,4 +1,4 @@
-package ru.skdev.store;
+package ru.skdev.store.user;
 
 import ru.skdev.model.User;
 

@@ -1,13 +1,12 @@
-package ru.skdev.store;
+package ru.skdev.store.priority;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import ru.skdev.model.Priority;
-import ru.skdev.model.Task;
+import ru.skdev.store.CrudRepository;
 
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RequiredArgsConstructor

@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.skdev.model.Task;
 import ru.skdev.model.User;
-import ru.skdev.store.TaskStore;
+import ru.skdev.store.task.TaskStore;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,9 +1,10 @@
-package ru.skdev.store;
+package ru.skdev.store.user;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import ru.skdev.model.User;
+import ru.skdev.store.CrudRepository;
 
 import java.util.Map;
 import java.util.Optional;

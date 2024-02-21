@@ -1,4 +1,4 @@
-package ru.skdev.store;
+package ru.skdev.store.priority;
 
 import ru.skdev.model.Priority;
 

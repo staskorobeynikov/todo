@@ -1,4 +1,4 @@
-package ru.skdev.store;
+package ru.skdev.store.task;
 
 import ru.skdev.model.Task;
 import ru.skdev.model.User;

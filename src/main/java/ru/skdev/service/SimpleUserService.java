@@ -3,7 +3,7 @@ package ru.skdev.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.skdev.model.User;
-import ru.skdev.store.UserStore;
+import ru.skdev.store.user.UserStore;
 
 import java.util.Optional;
 
