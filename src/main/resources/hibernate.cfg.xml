@@ -16,5 +16,6 @@
         <mapping class="ru.skdev.model.Task" />
         <mapping class="ru.skdev.model.User" />
         <mapping class="ru.skdev.model.Priority" />
+        <mapping class="ru.skdev.model.Category" />
     </session-factory>
 </hibernate-configuration>
