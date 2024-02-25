@@ -18,7 +18,7 @@ public class HibernatePriorityStore implements PriorityStore {
     @Override
     public List<Priority> findAll() {
         String query = """
-                FROM Priority t
+                FROM Priority p
                 """;
         return repository.query(query, Priority.class);
     }
