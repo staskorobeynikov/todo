@@ -1,4 +1,4 @@
-package ru.skdev.service;
+package ru.skdev.service.task;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

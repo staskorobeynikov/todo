@@ -1,4 +1,4 @@
-package ru.skdev.service;
+package ru.skdev.service.user;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

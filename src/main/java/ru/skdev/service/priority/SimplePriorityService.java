@@ -1,4 +1,4 @@
-package ru.skdev.service;
+package ru.skdev.service.priority;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
