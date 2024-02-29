@@ -24,6 +24,7 @@
             <tr>
                 <th scope="col">Status</th>
                 <th scope="col">Priority</th>
+                <th scope="col">Category</th>
                 <th scope="col">Name</th>
                 <th scope="col">Creator</th>
                 <th scope="col">Created date</th>
@@ -41,6 +42,17 @@
                 </td>
                 <td style="width: 100px; text-align: center;"
                     th:text="${task.priority.name}">
+                </td>
+                <td style="width: 100px; text-align: center;">
+                    <table class="table-borderless table-sm">
+                        <tbody>
+                        <tr th:each="category: ${task.categories}">
+                            <td>
+                                <row style="font-size: 16px" th:text="${category.name}"></row>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </td>
                 <td>
                     <a th:text="${task.title}" th:href="@{/tasks/{id}(id=${task.id})}"></a>

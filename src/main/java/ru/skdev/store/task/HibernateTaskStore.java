@@ -34,6 +34,7 @@ public class HibernateTaskStore implements TaskStore {
         String query = """
                 FROM Task t
                 JOIN FETCH t.priority
+                JOIN FETCH t.categories
                 WHERE t.user.id = :id
                 ORDER BY t.id
                 """;
@@ -48,6 +49,7 @@ public class HibernateTaskStore implements TaskStore {
         String query = """
                 FROM Task t
                 JOIN FETCH t.priority
+                JOIN FETCH t.categories
                 WHERE t.done = false AND t.user.id = :id
                 ORDER BY t.id
                 """;
@@ -62,6 +64,7 @@ public class HibernateTaskStore implements TaskStore {
         String query = """
                 FROM Task t
                 JOIN FETCH t.priority
+                JOIN FETCH t.categories
                 WHERE t.done = true AND t.user.id = :id
                 ORDER BY t.id
                 """;
