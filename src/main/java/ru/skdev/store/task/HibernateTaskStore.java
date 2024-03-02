@@ -119,6 +119,8 @@ public class HibernateTaskStore implements TaskStore {
     public Optional<Task> findById(Integer id) {
         String query = """
                 FROM Task t
+                JOIN FETCH t.priority
+                JOIN FETCH t.categories
                 WHERE t.id = :id
                 """;
         Map<String, Object> arguments = Map.of(

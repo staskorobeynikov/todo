@@ -25,6 +25,20 @@
                   <i class="bi bi-square"></i>
               </span>
                 </td>
+                <td style="width: 100px; text-align: center;"
+                    th:text="${task.priority.name}">
+                </td>
+                <td style="width: 100px; text-align: center;">
+                    <table class="table-borderless table-sm">
+                        <tbody>
+                        <tr th:each="category: ${task.categories}">
+                            <td>
+                                <row style="font-size: 16px" th:text="${category.name}"></row>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
                 <td style="width: 200px;" th:text="${task.title}"></td>
                 <td th:text="${task.description}"></td>
             </tr>
@@ -49,11 +63,11 @@
                                 Remove
                             </button>
                         </form>
+                    </div>
                 </div>
             </div>
         </div>
+        <footer th:insert="blocks/footer::footer"></footer>
     </div>
-    <footer th:insert="blocks/footer::footer"></footer>
-</div>
 </body>
 </html>
