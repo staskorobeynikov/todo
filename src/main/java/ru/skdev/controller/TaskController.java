@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import ru.skdev.model.Category;
 import ru.skdev.model.Task;
 import ru.skdev.model.User;
 import ru.skdev.service.category.CategoryService;
@@ -55,9 +56,10 @@ public class TaskController {
     @PostMapping("/create")
     public String saveNewTask(@ModelAttribute Task task,
                               @SessionAttribute("user") User user,
-                              @RequestParam List<Integer> categoryIds) {
+                              @RequestParam List<Category> categoryList) {
         task.setUser(user);
-        task.setCategories(categoryService.findByIds(categoryIds));
+        task.setCategories(categoryList);
+        //task.setCategories(categoryService.findByIds(categoryIds));
         taskService.save(task);
         return "redirect:/tasks";
     }

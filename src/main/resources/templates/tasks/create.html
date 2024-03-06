@@ -38,7 +38,7 @@
                 <div class="col-auto">
                     <div class="form-group" style="max-width: 250px;">
                         <label for="category"><b>Категория</b></label>
-                        <select class="custom-select" size="3" id="category" name="categoryIds" multiple required>
+                        <select class="custom-select" size="3" id="category" name="categoryList" multiple required>
                             <option th:each="category : ${categories}"
                                     th:value="${category.id}" th:text="${category.name}"></option>
                         </select>
