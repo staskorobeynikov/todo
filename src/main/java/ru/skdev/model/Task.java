@@ -34,10 +34,15 @@ public class Task {
     @Id
     @EqualsAndHashCode.Include
     private int id;
+
     private String title;
+
     private String description;
+
     private LocalDateTime created = LocalDateTime.now();
+
     private boolean done;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
